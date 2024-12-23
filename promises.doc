@@ -1,0 +1,378 @@
+1.	What is a promise in JavaScript?
+
+a)	A callback function
+
+b)	An object representing a future value or completion of an async operation
+
+c)	A synchronous operation
+
+d)	None of the above
+2.	Which method is used to handle a resolved promise?
+
+a)	catch()
+
+b)	then()
+
+c)	finally()
+
+d)	reject()
+3.	What is the default state of a promise when created?
+
+a)	Fulfilled
+
+b)	Rejected
+
+c)	Pending
+
+d)	Resolved
+4.	Which method is used to handle a rejected promise?
+
+a)	then()
+
+b)	reject()
+
+c)	catch()
+
+d)	resolve()
+5.	What does Promise.resolve(value) do?
+
+a)	Creates a promise that is immediately fulfilled with value
+
+b)	Creates a pending promise
+
+c)	Rejects a promise
+
+d)	None of the above
+6.	Which of the following is true for .then() in a promise?
+
+a)	It must return a value or another promise
+
+b)	It is optional and only for rejected cases
+
+c)	It cannot chain another .then()
+
+d)	None of the above
+7.	What happens when a promise is resolved?
+
+a)	It remains in a pending state
+
+b)	It transitions to the fulfilled state and executes .then() handlers
+
+c)	It transitions to the rejected state
+
+d)	It stops execution
+8.	What is printed in the console? javascript    Promise.resolve('Hello').then(res => console.log(res));
+a)	No output
+
+b)	Hello
+
+c)	Error
+
+d)	Undefined
+9.	How many .then() handlers can a promise chain?
+
+a)	Only one
+
+b)	Two
+
+c)	As many as needed
+
+d)	None
+10.	What happens when you return a value from .then()?
+a)	It resolves to another promise
+
+b)	It is passed to the next .then() handler
+
+c)	It is ignored
+
+d)	An error occurs
+11.	What is the output of the following code?
+ 	const promise = new Promise((resolve, reject) => {
+    resolve('First');
+});
+promise
+    .then(res => {
+        console.log(res);
+        return 'Second';
+    })
+    .then(res => console.log(res));
+a)	First then Second
+
+b)	Only First
+
+c)	Only Second
+
+d)	No output
+12.	What is printed in the console?
+ 	Promise.resolve('Start')
+    .then(res => {
+        console.log(res);
+        throw new Error('Something went wrong');
+    })
+    .catch(err => console.log(err.message));
+a)	Start and Something went wrong
+
+b)	Start only
+
+c)	Something went wrong only
+
+d)	Error
+13.	What is logged in the following code?
+ 	const promise = new Promise((resolve, reject) => {
+    resolve('Hello');
+});
+promise
+    .then(res => {
+        console.log(res);
+        return new Promise((resolve, reject) => resolve('World'));
+    })
+    .then(res => console.log(res));
+a)	Hello then World
+
+b)	World then Hello
+
+c)	Only Hello
+
+d)	Only World
+14.	What happens if a .catch() is added at the end of a fulfilled promise chain?
+a)	The chain will break
+
+b)	The .catch() will be ignored
+
+c)	It will handle any error thrown in the chain
+
+d)	It causes a syntax error
+15.	What does this code output?
+ 	const promise = new Promise((resolve, reject) => {
+    resolve('Step 1');
+});
+promise
+    .then(res => {
+        console.log(res);
+        return 'Step 2';
+    })
+    .then(res => {
+        console.log(res);
+        throw new Error('Oops!');
+    })
+    .catch(err => console.log(err.message));
+a)	Step 1, Step 2, Oops!
+
+b)	Step 1 then Oops!
+
+c)	Only Step 1
+
+d)	Error
+16.	What will the following code output?
+ 	const promise = new Promise((resolve, reject) => {
+    resolve('First');
+});
+promise
+    .then(res => console.log(res))
+    .catch(err => console.log('Caught:', err));
+a)	First
+
+b)	Caught: Error
+
+c)	Both First and Caught: Error
+
+d)	No output
+17.	What will be logged here?
+ 	Promise.reject('Error')
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+    .then(() => console.log('Completed'));
+a)	Error then Completed
+
+b)	Only Error
+
+c)	Only Completed
+
+d)	Error
+18.	What happens in this scenario?
+ 	const promise = Promise.resolve('Data');
+promise.then(res => console.log(res));
+console.log('End');
+a)	Data then End
+
+b)	End then Data
+
+c)	No output
+
+d)	Error
+19.	What will be the result of this code?
+ 	Promise.resolve('Start')
+    .then(res => {
+        console.log(res);
+        return 'Next';
+    })
+    .then(res => console.log(res))
+    .catch(err => console.log('Caught:', err));
+a)	Start then Next
+
+b)	Start then Caught: Error
+
+c)	Only Start
+
+d)	Error
+20.	What does this produce?
+ 	const promise = Promise.reject('Failure');
+promise.catch(err => {
+    console.log(err);
+    return 'Recovered';
+}).then(res => console.log(res));
+a)	Failure then Recovered
+
+b)	Recovered
+
+c)	Only Failure
+
+d)	Error
+21.	What is logged here?
+ 	Promise.resolve()
+    .then(() => {
+        console.log('First');
+        return Promise.resolve();
+    })
+    .then(() => console.log('Second'));
+a)	First then Second
+
+b)	Only First
+
+c)	Only Second
+
+d)	Error
+22.	What will this code log?
+ 	const promise = new Promise((resolve, reject) => {
+    resolve('Done');
+});
+promise
+    .then(res => {
+        console.log(res);
+        return Promise.reject('Error in Chain');
+    })
+    .catch(err => console.log(err));
+a)	Done then Error in Chain
+
+b)	Only Done
+
+c)	Only Error in Chain
+
+d)	Error
+23.	What happens here?
+ 	const promise = Promise.resolve('Resolved');
+promise
+    .then(() => Promise.reject('Failed'))
+    .catch(err => console.log(err));
+a)	Failed
+
+b)	Error
+
+c)	No output
+
+d)	Resolved
+24.	What is printed in the console?
+ 	Promise.resolve('A')
+    .then(res => {
+        console.log(res);
+        return 'B';
+    })
+    .then(res => console.log(res))
+    .catch(() => console.log('Error'));
+a)	A then B
+
+b)	A then Error
+
+c)	Only A
+
+d)	Error
+25.	What is logged here?
+ 	const promise = Promise.resolve('Start');
+promise.then(res => {
+    console.log(res);
+    return Promise.resolve('Middle');
+}).then(res => console.log(res));
+a)	Start then Middle
+
+b)	Middle then Start
+
+c)	Only Start
+
+d)	Error
+26.	What does this code log?
+ 	Promise.resolve('Hello')
+    .then(() => {
+        console.log('World');
+        throw new Error('Oops');
+    })
+    .catch(err => console.log(err.message));
+a)	World and Oops
+
+b)	Only World
+
+c)	Only Oops
+
+d)	Error
+27.	What is printed in the following code?
+ 	Promise.reject('Error')
+    .catch(err => {
+        console.log(err);
+        throw new Error('Another Error');
+    })
+    .catch(err => console.log(err.message));
+a)	Error then Another Error
+
+b)	Only Error
+
+c)	Only Another Error
+
+d)	Error
+28.	What happens in this scenario?
+ 	const promise = new Promise((resolve, reject) => {
+    reject('Failed');
+});
+promise.catch(err => {
+    console.log(err);
+    return 'Recovered';
+}).then(res => console.log(res));
+a)	Failed then Recovered
+
+b)	Only Failed
+
+c)	Only Recovered
+
+d)	Error
+29.	What does this produce?
+ 	const promise = Promise.resolve('Step 1');
+promise
+    .then(res => {
+        console.log(res);
+        return new Promise((resolve, reject) => {
+            resolve('Step 2');
+        });
+    })
+    .then(res => console.log(res));
+a)	Step 1 then Step 2
+
+b)	Only Step 1
+
+c)	Only Step 2
+
+d)	Error
+30.	What will this code output?
+ 	const promise = new Promise((resolve, reject) => {
+    reject('Rejected');
+});
+promise
+    .catch(err => {
+        console.log(err);
+        return 'Recovered';
+    })
+    .then(res => console.log(res));
+a)	Rejected then Recovered
+
+b)	Only Rejected
+
+c)	Only Recovered
+
+d)	Error
